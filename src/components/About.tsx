@@ -114,12 +114,12 @@ export default function About() {
                   className="relative text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase flex items-center gap-3 pb-2"
                   style={{ transformStyle: 'preserve-3d' }}
                   animate={{ 
-                    rotateX: [0, 4, 0, -4, 0], 
-                    rotateY: [0, -4, 0, 4, 0] 
+                    rotateX: [0, 5, 0, -5, 0], 
+                    rotateY: [0, -5, 0, 5, 0] 
                   }}
                   whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
                   transition={{ 
-                    duration: 3, 
+                    duration: 2.5, 
                     repeat: Infinity, 
                     ease: "linear" 
                   }}

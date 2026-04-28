@@ -160,8 +160,16 @@ export default function Pricing() {
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
               style={{ transformStyle: 'preserve-3d' }}
+              animate={{ 
+                rotateX: [0, 5, 0, -5, 0], 
+                rotateY: [0, -5, 0, 5, 0] 
+              }}
               whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
             >
               <CreditCard className="text-[#00ff87] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
               <span className="relative inline-block whitespace-nowrap">
@@ -258,8 +266,16 @@ export default function Pricing() {
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
               style={{ transformStyle: 'preserve-3d' }}
+              animate={{ 
+                rotateX: [0, 5, 0, -5, 0], 
+                rotateY: [0, -5, 0, 5, 0] 
+              }}
               whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
             >
               <Smartphone className="text-[#00f0ff] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
               <span className="relative inline-block whitespace-nowrap">

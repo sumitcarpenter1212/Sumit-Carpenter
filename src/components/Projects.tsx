@@ -51,7 +51,7 @@ export default function Projects() {
               }}
               whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
               transition={{ 
-                duration: 3, 
+                duration: 2.5, 
                 repeat: Infinity, 
                 ease: "linear" 
               }}

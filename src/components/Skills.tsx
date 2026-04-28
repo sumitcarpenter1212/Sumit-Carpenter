@@ -71,12 +71,12 @@ export default function Skills() {
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
               style={{ transformStyle: 'preserve-3d' }}
               animate={{ 
-                rotateX: [0, 4, 0, -4, 0], 
-                rotateY: [0, -4, 0, 4, 0] 
+                rotateX: [0, 5, 0, -5, 0], 
+                rotateY: [0, -5, 0, 5, 0] 
               }}
               whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
               transition={{ 
-                duration: 3, 
+                duration: 2.5, 
                 repeat: Infinity, 
                 ease: "linear" 
               }}
