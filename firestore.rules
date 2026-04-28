@@ -1,0 +1,78 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: projects
+    // Document ID: auto-generated
+    // Fields:
+    //   - title: string (required)
+    //   - category: string (required)
+    //   - image: string (required)
+    //   - description: string (required)
+    //   - tags: list of strings (required)
+    //   - liveLink: string (optional)
+    //   - isPaid: boolean (required)
+    //   - price: string (optional)
+    //   - createdAt: timestamp (optional for updates)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "sumitcarpenter123@gmail.com" ||
+        request.auth.token.email == "sumitcarpenter123@gmsil.com"
+      );
+    }
+
+    function hasRequiredProjectFields(data) {
+      return data.keys().hasAll(['title', 'category', 'image', 'description', 'tags', 'isPaid']);
+    }
+
+    function isValidProject(data) {
+      return hasRequiredProjectFields(data) &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 500 &&
+             data.category is string && data.category.size() > 0 && data.category.size() < 100 &&
+             data.image is string && data.image.size() > 0 && data.image.size() < 2000000 &&
+             data.description is string && data.description.size() > 0 && data.description.size() < 50000 &&
+             data.tags is list && data.tags.size() <= 50 &&
+             data.isPaid is bool &&
+             (!('createdAt' in data) || data.createdAt is timestamp) &&
+             (!('liveLink' in data) || (data.liveLink is string && data.liveLink.size() < 2000)) &&
+             (!('purchaseLink' in data) || (data.purchaseLink is string && data.purchaseLink.size() < 2000)) &&
+             (!('price' in data) || (data.price is string && data.price.size() < 100));
+    }
+
+    match /projects/{projectId} {
+      // Anyone can read projects
+      allow read: if true;
+      
+      // Only admin can create, update, delete
+      allow create: if isAdmin() && isValidProject(request.resource.data);
+      allow update: if isAdmin() && isValidProject(request.resource.data) && 
+                    (!('createdAt' in resource.data) || request.resource.data.createdAt == resource.data.createdAt);
+      allow delete: if isAdmin();
+    }
+
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /certificates/{certId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

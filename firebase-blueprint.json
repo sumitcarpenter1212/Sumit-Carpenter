@@ -1,0 +1,30 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "image": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "liveLink": { "type": "string" },
+        "isPaid": { "type": "boolean" },
+        "price": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["title", "category", "image", "description", "tags", "isPaid"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Collection of portfolio projects"
+    }
+  }
+}
