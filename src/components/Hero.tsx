@@ -29,7 +29,7 @@ export default function Hero() {
               {/* 4D VIP Text Container */}
               <motion.div 
                 className="relative whitespace-nowrap text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight"
-                style={{ transformStyle: 'preserve-3d' }}
+                style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
                 animate={{ 
                   rotateX: [0, 5, 0, -5, 0], 
                   rotateY: [0, -5, 0, 5, 0] 
@@ -66,7 +66,7 @@ export default function Hero() {
             {/* 4D Text Container */}
             <motion.h2 
               className="relative text-xl sm:text-2xl md:text-3xl font-bold tracking-wide uppercase"
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
               animate={{ 
                 rotateX: [0, -5, 0, 5, 0], 
                 rotateY: [0, 5, 0, -5, 0] 
@@ -124,7 +124,7 @@ export default function Hero() {
             rotateX: { duration: 8, repeat: Infinity, ease: "linear" },
             rotateY: { duration: 8, repeat: Infinity, ease: "linear" }
           }}
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           className="relative flex justify-center items-center z-10"
         >
           <Tilt

@@ -69,7 +69,7 @@ export default function Skills() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#00f0ff] blur-xl opacity-30 group-hover/skills:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
               animate={{ 
                 rotateX: [0, 5, 0, -5, 0], 
                 rotateY: [0, -5, 0, 5, 0] 

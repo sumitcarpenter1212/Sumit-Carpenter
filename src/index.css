@@ -14,7 +14,6 @@
 @layer base {
   body {
     @apply bg-background text-white font-sans antialiased overflow-x-hidden selection:bg-accent-blue/30 selection:text-accent-blue;
-    cursor: none; /* Hide default cursor for custom cursor */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -65,15 +64,5 @@
   
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-blue to-accent-purple;
-  }
-}
-
-/* Hide cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
-  .custom-cursor {
-    display: none !important;
   }
 }

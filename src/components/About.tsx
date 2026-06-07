@@ -67,7 +67,7 @@ export default function About() {
               rotateX: { duration: 8, repeat: Infinity, ease: "linear" },
               rotateY: { duration: 8, repeat: Infinity, ease: "linear" }
             }}
-            style={{ transformStyle: 'preserve-3d' }}
+            style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
             <Tilt
               tiltMaxAngleX={5}
@@ -112,7 +112,7 @@ export default function About() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#ff007f] via-[#7c3aed] to-[#00f0ff] blur-xl opacity-30 group-hover/profile:opacity-60 transition-opacity duration-500 animate-pulse" />
                 <motion.h3 
                   className="relative text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase flex items-center gap-3 pb-2"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
                   animate={{ 
                     rotateX: [0, 5, 0, -5, 0], 
                     rotateY: [0, -5, 0, 5, 0] 

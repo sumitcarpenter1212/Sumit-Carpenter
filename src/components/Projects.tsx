@@ -44,7 +44,7 @@ export default function Projects() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#ff3366] via-[#ff9933] to-[#ff3366] blur-xl opacity-30 group-hover/projects:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
               animate={{ 
                 rotateX: [0, 5, 0, -5, 0], 
                 rotateY: [0, -5, 0, 5, 0] 

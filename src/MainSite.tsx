@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import CustomCursor from './components/CustomCursor';
 import PageLoader from './components/PageLoader';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
@@ -30,7 +29,6 @@ export default function MainSite() {
 
   return (
     <div className="relative min-h-screen bg-background text-white selection:bg-accent-blue/30 selection:text-accent-blue">
-      <CustomCursor />
       
       <AnimatePresence mode="wait">
         {loading && <PageLoader onComplete={() => setLoading(false)} />}
