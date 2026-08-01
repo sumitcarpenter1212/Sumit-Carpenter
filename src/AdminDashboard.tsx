@@ -12,6 +12,7 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
   // Form states
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
+  const [subCategory, setSubCategory] = useState('');
   const [image, setImage] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [description, setDescription] = useState('');
@@ -240,6 +241,7 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
   const resetForm = () => {
     setTitle('');
     setCategory('');
+    setSubCategory('');
     setImage('');
     setDescription('');
     setTags('');
@@ -308,6 +310,7 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
     setCurrentProject(project);
     setTitle(project.title);
     setCategory(project.category);
+    setSubCategory(project.subCategory || '');
     setImage(project.image);
     setDescription(project.description);
     setTags(project.tags.join(', '));
@@ -344,6 +347,7 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
     const projectData = {
       title,
       category,
+      subCategory,
       image,
       description,
       tags: tags.split(',').map(t => t.trim()).filter(t => t !== ''),
@@ -477,6 +481,11 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
                   <option value="Apps">Apps</option>
                   <option value="Design">Design</option>
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-xs text-white/50 mb-1 uppercase tracking-wider">Sub Category (Optional)</label>
+                <input type="text" value={subCategory} onChange={e => setSubCategory(e.target.value)} className="w-full bg-[#0a0a0a] border border-white/10 rounded-lg px-4 py-2 text-white focus:border-accent-blue/50 outline-none" placeholder="e.g. Restaurant, Dentist, Real Estate" />
               </div>
 
               <div>
