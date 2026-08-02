@@ -264,28 +264,35 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        // Keep high quality (Full HD) but scale down if it's massively huge (like 4K/8K)
-        const MAX_WIDTH = 1920;
-        const MAX_HEIGHT = 1920;
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-          }
-        } else {
-          if (height > MAX_HEIGHT) {
-            width *= MAX_HEIGHT / height;
-            height = MAX_HEIGHT;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
+        // Force exactly 1920x1080 (16:9 aspect ratio)
+        const TARGET_WIDTH = 1920;
+        const TARGET_HEIGHT = 1080;
+        
+        canvas.width = TARGET_WIDTH;
+        canvas.height = TARGET_HEIGHT;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, width, height);
+        
+        // Calculate crop to center the image and cover the 1920x1080 area
+        const imgRatio = img.width / img.height;
+        const targetRatio = TARGET_WIDTH / TARGET_HEIGHT;
+        
+        let sourceX = 0;
+        let sourceY = 0;
+        let sourceWidth = img.width;
+        let sourceHeight = img.height;
+        
+        if (imgRatio > targetRatio) {
+          // Image is wider than 16:9, crop sides
+          sourceWidth = img.height * targetRatio;
+          sourceX = (img.width - sourceWidth) / 2;
+        } else {
+          // Image is taller than 16:9, crop top/bottom
+          sourceHeight = img.width / targetRatio;
+          sourceY = (img.height - sourceHeight) / 2;
+        }
+        
+        // Draw the cropped image
+        ctx?.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
         
         // Compress to JPEG with high quality
         let quality = 0.9;
@@ -489,7 +496,7 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
               </div>
 
               <div>
-                <label className="block text-xs text-white/50 mb-1 uppercase tracking-wider">Project Image *</label>
+                <label className="block text-xs text-white/50 mb-1 uppercase tracking-wider">Project Image (Will be auto-cropped to 1920x1080 16:9) *</label>
                 <div className="relative group/upload">
                   <input 
                     type="file" 

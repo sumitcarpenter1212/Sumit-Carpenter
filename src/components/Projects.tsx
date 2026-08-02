@@ -143,7 +143,7 @@ export default function Projects() {
                 >
                   <div className="glass-card overflow-hidden group h-full flex flex-col border border-white/5 hover:border-accent-blue/50 transition-colors duration-500">
                     {/* Image Container */}
-                    <div className="relative h-64 md:h-72 overflow-hidden bg-black/20">
+                    <div className="relative w-full aspect-video overflow-hidden">
                       <img
                         src={project.image || undefined}
                         alt={project.title}
