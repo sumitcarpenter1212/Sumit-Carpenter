@@ -3,6 +3,7 @@ import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimest
 import { db } from './firebase';
 import { LogOut, Plus, Edit2, Trash2, X, Save, Image as ImageIcon, Link as LinkIcon, Tag, IndianRupee, UploadCloud, Loader2, Download, Award, Calendar, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AdminPricing from './components/AdminPricing';
 
 export default function AdminDashboard({ user, onLogout }: { user: any, onLogout: () => void }) {
   const [projects, setProjects] = useState<any[]>([]);
@@ -294,15 +295,15 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
         // Draw the cropped image
         ctx?.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
         
-        // Compress to JPEG with high quality
-        let quality = 0.9;
-        let compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+        // Compress to WebP with high quality
+        let quality = 0.95;
+        let compressedBase64 = canvas.toDataURL('image/webp', quality);
 
         // Firestore has a strict 1MB document limit. 
         // We ensure the base64 string is under ~900KB to safely fit in the database.
         while (compressedBase64.length > 900000 && quality > 0.1) {
-          quality -= 0.1;
-          compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+          quality -= 0.05;
+          compressedBase64 = canvas.toDataURL('image/webp', quality);
         }
 
         setImage(compressedBase64);
@@ -740,6 +741,9 @@ export default function AdminDashboard({ user, onLogout }: { user: any, onLogout
           </div>
         </div>
       </div>
+      
+      {/* Pricing Settings */}
+      <AdminPricing />
     </div>
   );
 }

@@ -7,6 +7,7 @@
       "properties": {
         "title": { "type": "string" },
         "category": { "type": "string" },
+        "subCategory": { "type": "string" },
         "image": { "type": "string" },
         "description": { "type": "string" },
         "tags": {
@@ -14,17 +15,66 @@
           "items": { "type": "string" }
         },
         "liveLink": { "type": "string" },
+        "purchaseLink": { "type": "string" },
         "isPaid": { "type": "boolean" },
         "price": { "type": "string" },
         "createdAt": { "type": "timestamp" }
       },
-      "required": ["title", "category", "image", "description", "tags", "isPaid"]
+      "required": ["title", "category", "image", "description", "tags"]
+    },
+    "PricingPlan": {
+      "title": "Pricing Plan",
+      "description": "A single pricing plan tier",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "nameColor": { "type": "string" },
+        "nameGlow": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string" },
+              "tooltip": { "type": "string" }
+            }
+          }
+        },
+        "buttonText": { "type": "string" },
+        "whatsappText": { "type": "string" },
+        "buttonStyle": { "type": "string" },
+        "isPopular": { "type": "boolean" }
+      },
+      "required": ["name", "price", "description", "features"]
+    },
+    "PricingSettings": {
+      "title": "Pricing Settings",
+      "description": "Stores the pricing plans for the website and app",
+      "type": "object",
+      "properties": {
+        "websitePlans": {
+          "type": "array",
+          "items": { "$ref": "#/entities/PricingPlan" }
+        },
+        "appPlans": {
+          "type": "array",
+          "items": { "$ref": "#/entities/PricingPlan" }
+        }
+      },
+      "required": ["websitePlans", "appPlans"]
     }
   },
   "firestore": {
     "/projects/{projectId}": {
       "schema": { "$ref": "#/entities/Project" },
       "description": "Collection of portfolio projects"
+    },
+    "/settings/pricing": {
+      "schema": { "$ref": "#/entities/PricingSettings" },
+      "description": "Pricing configuration document"
     }
   }
 }

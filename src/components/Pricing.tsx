@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { CreditCard, CheckCircle2, HelpCircle, Zap, Star, Diamond, Smartphone } from 'lucide-react';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebase';
 
-const websitePlans = [
+export const defaultWebsitePlans = [
   {
     name: 'Starter',
     icon: <Zap className="w-6 h-6 text-[#00ff87]" />,
@@ -70,7 +73,7 @@ const websitePlans = [
   },
 ];
 
-const appPlans = [
+export const defaultAppPlans = [
   {
     name: 'Starter',
     icon: <Zap className="w-6 h-6 text-[#00ff87]" />,
@@ -144,6 +147,38 @@ const appPlans = [
 
 export default function Pricing() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [websitePlans, setWebsitePlans] = useState<any[]>(defaultWebsitePlans);
+  const [appPlans, setAppPlans] = useState<any[]>(defaultAppPlans);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(doc(db, 'settings', 'pricing'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        if (data.websitePlans && data.websitePlans.length > 0) {
+          setWebsitePlans(data.websitePlans.map((plan: any) => ({
+            ...plan,
+            // Re-inject the JSX icon based on the icon name string if needed, 
+            // but for simplicity, we map predefined names to our imported icons.
+            icon: plan.icon === 'Zap' ? <Zap className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  plan.icon === 'Star' ? <Star className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  plan.icon === 'Diamond' ? <Diamond className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  <Zap className="w-6 h-6" />
+          })));
+        }
+        if (data.appPlans && data.appPlans.length > 0) {
+          setAppPlans(data.appPlans.map((plan: any) => ({
+            ...plan,
+            icon: plan.icon === 'Zap' ? <Zap className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  plan.icon === 'Star' ? <Star className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  plan.icon === 'Diamond' ? <Diamond className={`w-6 h-6 text-[${plan.nameColor.split('-')[1]?.replace(']', '') || '#ffffff'}]`} /> :
+                  <Smartphone className="w-6 h-6" />
+          })));
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <section id="pricing" className="py-24 relative">
