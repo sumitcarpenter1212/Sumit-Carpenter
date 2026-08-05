@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
 import { ArrowRight, User } from 'lucide-react';
 
 export default function Hero() {
@@ -29,22 +28,12 @@ export default function Hero() {
               {/* 4D VIP Text Container */}
               <motion.div 
                 className="relative whitespace-nowrap text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight"
-                style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-                animate={{ 
-                  rotateX: [0, 5, 0, -5, 0], 
-                  rotateY: [0, -5, 0, 5, 0] 
-                }}
-                whileHover={{ rotateX: 15, rotateY: -15, scale: 1.05 }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
+                whileHover={{ scale: 1.05 }}
               >
                 {/* 3D Extrusion Layers */}
-                <span className="absolute top-[2px] left-[2px] text-[#7c3aed] opacity-80 select-none" style={{ transform: 'translateZ(-10px)' }}>SUMIT CARPENTER</span>
-                <span className="absolute top-[4px] left-[4px] text-[#ff007f] opacity-60 select-none" style={{ transform: 'translateZ(-20px)' }}>SUMIT CARPENTER</span>
-                <span className="absolute top-[6px] left-[6px] text-black opacity-50 blur-[3px] select-none" style={{ transform: 'translateZ(-30px)' }}>SUMIT CARPENTER</span>
+                <span className="absolute top-[2px] left-[2px] text-[#7c3aed] opacity-80 select-none" >SUMIT CARPENTER</span>
+                <span className="absolute top-[4px] left-[4px] text-[#ff007f] opacity-60 select-none" >SUMIT CARPENTER</span>
+                <span className="absolute top-[6px] left-[6px] text-black opacity-50 blur-[3px] select-none" >SUMIT CARPENTER</span>
                 
                 {/* Main Vibrant Text */}
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#e879f9] to-[#ff007f]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)', filter: 'drop-shadow(0 0 15px rgba(232,121,249,0.5))' }}>
@@ -66,22 +55,11 @@ export default function Hero() {
             {/* 4D Text Container */}
             <motion.h2 
               className="relative text-xl sm:text-2xl md:text-3xl font-bold tracking-wide uppercase"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-              animate={{ 
-                rotateX: [0, -5, 0, 5, 0], 
-                rotateY: [0, 5, 0, -5, 0] 
-              }}
-              whileHover={{ rotateX: 10, rotateY: -10, scale: 1.02 }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "linear",
-                delay: 0.5 
-              }}
+              whileHover={{ scale: 1.02 }}
             >
               {/* 3D Extrusion Layers */}
-              <span className="absolute top-[1px] left-[1px] text-blue-700 opacity-70 select-none" style={{ transform: 'translateZ(-5px)' }}>AI Website & App Developer</span>
-              <span className="absolute top-[2px] left-[2px] text-black opacity-50 blur-[2px] select-none" style={{ transform: 'translateZ(-10px)' }}>AI Website & App Developer</span>
+              <span className="absolute top-[1px] left-[1px] text-blue-700 opacity-70 select-none" >AI Website & App Developer</span>
+              <span className="absolute top-[2px] left-[2px] text-black opacity-50 blur-[2px] select-none" >AI Website & App Developer</span>
               
               {/* Main Vibrant Text */}
               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400" style={{ WebkitTextStroke: '0.5px rgba(255,255,255,0.1)', filter: 'drop-shadow(0 0 10px rgba(56,189,248,0.3))' }}>
@@ -114,28 +92,15 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ 
             opacity: 1, 
-            scale: 1,
-            rotateX: [0, 3, 0, -3, 0], 
-            rotateY: [0, -3, 0, 3, 0]
+            scale: 1
           }}
           transition={{ 
             opacity: { duration: 1, delay: 0.4 },
-            scale: { duration: 1, delay: 0.4 },
-            rotateX: { duration: 8, repeat: Infinity, ease: "linear" },
-            rotateY: { duration: 8, repeat: Infinity, ease: "linear" }
+            scale: { duration: 1, delay: 0.4 }
           }}
-          style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           className="relative flex justify-center items-center z-10"
         >
-          <Tilt
-            tiltMaxAngleX={10}
-            tiltMaxAngleY={10}
-            perspective={1000}
-            scale={1.05}
-            transitionSpeed={2000}
-            gyroscope={true}
-            className="relative w-72 h-72 md:w-96 md:h-96"
-          >
+          <div className="relative w-72 h-72 md:w-96 md:h-96 group hover:scale-[1.05] transition-transform duration-500">
             {/* Outer glowing rings */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -188,7 +153,7 @@ export default function Hero() {
               <div className="w-2 h-2 rounded-full bg-accent-purple shadow-[0_0_8px_#7c3aed]" />
               <span className="text-xs font-bold font-mono">FULL STACK</span>
             </motion.div>
-          </Tilt>
+          </div>
         </motion.div>
       </div>
     </section>

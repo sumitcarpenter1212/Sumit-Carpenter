@@ -142,34 +142,32 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center justify-self-end gap-3 perspective-1000">
           <motion.button
             onClick={() => setIsCertModalOpen(true)}
-            whileHover={{ scale: 1.05, rotateX: 10, rotateY: -10 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{ transformStyle: 'preserve-3d' }}
             className="relative flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-black tracking-wider uppercase overflow-hidden shadow-[0_0_20px_rgba(255,51,102,0.4)] hover:shadow-[0_0_30px_rgba(255,51,102,0.6)] transition-all duration-300"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#ff3366] via-purple-500 to-accent-blue opacity-90 group-hover:opacity-100 transition-opacity" style={{ transform: 'translateZ(-10px)' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ff3366] via-purple-500 to-accent-blue opacity-90 group-hover:opacity-100 transition-opacity"  />
             <div className="absolute inset-[2px] rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm group-hover:bg-[#0a0a0a]/40 transition-colors duration-300 pointer-events-none" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80 group-hover:text-white relative z-10 transition-colors drop-shadow-md text-xs sm:text-sm" style={{ transform: 'translateZ(20px)' }}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80 group-hover:text-white relative z-10 transition-colors drop-shadow-md text-xs sm:text-sm" >
               CERTIFICATES
             </span>
-            <Award size={16} className="text-white group-hover:animate-bounce relative z-10 filter drop-shadow-md" style={{ transform: 'translateZ(20px)' }} />
+            <Award size={16} className="text-white group-hover:animate-bounce relative z-10 filter drop-shadow-md"  />
           </motion.button>
 
           <motion.a
             href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, rotateX: 10, rotateY: -10 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{ transformStyle: 'preserve-3d' }}
             className="relative flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-black tracking-wider uppercase overflow-hidden shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] transition-all duration-300"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-accent-blue via-accent-purple to-[#ff3366] opacity-90 group-hover:opacity-100 transition-opacity" style={{ transform: 'translateZ(-10px)' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-blue via-accent-purple to-[#ff3366] opacity-90 group-hover:opacity-100 transition-opacity"  />
             <div className="absolute inset-[2px] rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm group-hover:bg-[#0a0a0a]/40 transition-colors duration-300 pointer-events-none" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80 group-hover:text-white relative z-10 transition-colors drop-shadow-md text-xs sm:text-sm" style={{ transform: 'translateZ(20px)' }}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80 group-hover:text-white relative z-10 transition-colors drop-shadow-md text-xs sm:text-sm" >
               Download CV
             </span>
-            <Download size={16} className="text-white group-hover:animate-bounce relative z-10 filter drop-shadow-md" style={{ transform: 'translateZ(20px)' }} />
+            <Download size={16} className="text-white group-hover:animate-bounce relative z-10 filter drop-shadow-md"  />
           </motion.a>
         </div>
 

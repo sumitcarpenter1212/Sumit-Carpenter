@@ -194,22 +194,12 @@ export default function Pricing() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#00ff87] via-[#60efff] to-[#00ff87] blur-xl opacity-30 group-hover/pricing:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-              animate={{ 
-                rotateX: [0, 5, 0, -5, 0], 
-                rotateY: [0, -5, 0, 5, 0] 
-              }}
-              whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
+              whileHover={{ scale: 1.05 }}
             >
-              <CreditCard className="text-[#00ff87] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
+              <CreditCard className="text-[#00ff87] w-10 h-10 md:w-12 md:h-12" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="absolute top-[2px] left-[2px] text-[#60efff] opacity-80 select-none" style={{ transform: 'translateZ(-5px)' }}>WEBSITE PRICING</span>
-                <span className="absolute top-[4px] left-[4px] text-[#00ff87] opacity-60 select-none" style={{ transform: 'translateZ(-10px)' }}>WEBSITE PRICING</span>
+                <span className="absolute top-[2px] left-[2px] text-[#60efff] opacity-80 select-none" >WEBSITE PRICING</span>
+                <span className="absolute top-[4px] left-[4px] text-[#00ff87] opacity-60 select-none" >WEBSITE PRICING</span>
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00ff87] via-[#60efff] to-[#00ff87]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', filter: 'drop-shadow(0 0 10px rgba(0,255,135,0.4))' }}>
                   WEBSITE PRICING
                 </span>
@@ -300,22 +290,12 @@ export default function Pricing() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#00f0ff] blur-xl opacity-30 group-hover/pricing-app:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-              animate={{ 
-                rotateX: [0, 5, 0, -5, 0], 
-                rotateY: [0, -5, 0, 5, 0] 
-              }}
-              whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
+              whileHover={{ scale: 1.05 }}
             >
-              <Smartphone className="text-[#00f0ff] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
+              <Smartphone className="text-[#00f0ff] w-10 h-10 md:w-12 md:h-12" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="absolute top-[2px] left-[2px] text-[#3b82f6] opacity-80 select-none" style={{ transform: 'translateZ(-5px)' }}>APPLICATION PRICING</span>
-                <span className="absolute top-[4px] left-[4px] text-[#00f0ff] opacity-60 select-none" style={{ transform: 'translateZ(-10px)' }}>APPLICATION PRICING</span>
+                <span className="absolute top-[2px] left-[2px] text-[#3b82f6] opacity-80 select-none" >APPLICATION PRICING</span>
+                <span className="absolute top-[4px] left-[4px] text-[#00f0ff] opacity-60 select-none" >APPLICATION PRICING</span>
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#00f0ff]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', filter: 'drop-shadow(0 0 10px rgba(0,240,255,0.4))' }}>
                   APPLICATION PRICING
                 </span>

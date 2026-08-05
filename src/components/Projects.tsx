@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Rocket, X } from 'lucide-react';
 import { collection, onSnapshot } from 'firebase/firestore';
@@ -57,22 +56,12 @@ export default function Projects() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#ff3366] via-[#ff9933] to-[#ff3366] blur-xl opacity-30 group-hover/projects:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-              animate={{ 
-                rotateX: [0, 5, 0, -5, 0], 
-                rotateY: [0, -5, 0, 5, 0] 
-              }}
-              whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
+              whileHover={{ scale: 1.05 }}
             >
-              <Rocket className="text-[#ff3366] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
+              <Rocket className="text-[#ff3366] w-10 h-10 md:w-12 md:h-12" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="absolute top-[2px] left-[2px] text-[#ff9933] opacity-80 select-none" style={{ transform: 'translateZ(-5px)' }}>PROJECTS</span>
-                <span className="absolute top-[4px] left-[4px] text-[#ff3366] opacity-60 select-none" style={{ transform: 'translateZ(-10px)' }}>PROJECTS</span>
+                <span className="absolute top-[2px] left-[2px] text-[#ff9933] opacity-80 select-none" >PROJECTS</span>
+                <span className="absolute top-[4px] left-[4px] text-[#ff3366] opacity-60 select-none" >PROJECTS</span>
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#ff3366] via-[#ff6666] to-[#ff9933]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', filter: 'drop-shadow(0 0 10px rgba(255,102,102,0.4))' }}>
                   PROJECTS
                 </span>
@@ -132,15 +121,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5 }}
               >
-                <Tilt
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                  perspective={1000}
-                  scale={1.02}
-                  transitionSpeed={1000}
-                  gyroscope={true}
-                  className="h-full"
-                >
+                <div className="h-full hover:scale-[1.02] transition-transform duration-500">
                   <div className="glass-card overflow-hidden group h-full flex flex-col border border-white/5 hover:border-accent-blue/50 transition-colors duration-500">
                     {/* Image Container */}
                     <div className="relative w-full aspect-video overflow-hidden">
@@ -217,7 +198,7 @@ export default function Projects() {
                       </div>
                     </div>
                   </div>
-                </Tilt>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>

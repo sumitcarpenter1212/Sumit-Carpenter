@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import { User, Code, Cpu, Globe } from 'lucide-react';
@@ -55,27 +54,10 @@ export default function About() {
           {/* Left: Image Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { 
-              opacity: 1, 
-              x: 0,
-              rotateX: [0, 3, 0, -3, 0], 
-              rotateY: [0, -3, 0, 3, 0]
-            } : { opacity: 0, x: -50 }}
-            transition={{ 
-              opacity: { duration: 0.8, delay: 0.2 },
-              x: { duration: 0.8, delay: 0.2 },
-              rotateX: { duration: 8, repeat: Infinity, ease: "linear" },
-              rotateY: { duration: 8, repeat: Infinity, ease: "linear" }
-            }}
-            style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Tilt
-              tiltMaxAngleX={5}
-              tiltMaxAngleY={5}
-              perspective={1000}
-              gyroscope={true}
-              className="glass-card p-4 relative group"
-            >
+            <div className="glass-card p-4 relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative rounded-xl overflow-hidden aspect-[4/5] bg-secondary flex items-center justify-center">
                 {!imgError ? (
@@ -97,7 +79,7 @@ export default function About() {
               {/* Decorative elements */}
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-blue/20 rounded-full blur-2xl -z-10" />
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent-purple/20 rounded-full blur-2xl -z-10" />
-            </Tilt>
+            </div>
           </motion.div>
 
           {/* Right: Content */}
@@ -112,19 +94,8 @@ export default function About() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#ff007f] via-[#7c3aed] to-[#00f0ff] blur-xl opacity-30 group-hover/profile:opacity-60 transition-opacity duration-500 animate-pulse" />
                 <motion.h3 
                   className="relative text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase flex items-center gap-3 pb-2"
-                  style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-                  animate={{ 
-                    rotateX: [0, 5, 0, -5, 0], 
-                    rotateY: [0, -5, 0, 5, 0] 
-                  }}
-                  whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-                  transition={{ 
-                    duration: 2.5, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
                 >
-                  <Globe className="text-accent-blue w-8 h-8 md:w-10 md:h-10" style={{ transform: 'translateZ(10px)' }} />
+                  <Globe className="text-accent-blue w-8 h-8 md:w-10 md:h-10"  />
                   <span className="relative inline-block whitespace-nowrap">
                     <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#e879f9] to-[#ff007f]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', filter: 'drop-shadow(0 0 10px rgba(232,121,249,0.4))' }}>
                       MY PROFILE

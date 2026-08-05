@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
 import { useInView } from 'react-intersection-observer';
 import { Layout, Smartphone, PenTool, Code2, ImageIcon } from 'lucide-react';
 
@@ -69,22 +68,12 @@ export default function Skills() {
             <div className="absolute -inset-2 bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#00f0ff] blur-xl opacity-30 group-hover/skills:opacity-60 transition-opacity duration-500 animate-pulse" />
             <motion.h2 
               className="relative text-4xl md:text-6xl font-black tracking-tight uppercase pb-2 flex items-center justify-center gap-3 md:gap-4"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-              animate={{ 
-                rotateX: [0, 5, 0, -5, 0], 
-                rotateY: [0, -5, 0, 5, 0] 
-              }}
-              whileHover={{ rotateX: 10, rotateY: -10, scale: 1.05 }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
+              whileHover={{ scale: 1.05 }}
             >
-              <Code2 className="text-[#00f0ff] w-10 h-10 md:w-12 md:h-12" style={{ transform: 'translateZ(10px)' }} />
+              <Code2 className="text-[#00f0ff] w-10 h-10 md:w-12 md:h-12"  />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="absolute top-[2px] left-[2px] text-[#3b82f6] opacity-80 select-none" style={{ transform: 'translateZ(-5px)' }}>SKILLS</span>
-                <span className="absolute top-[4px] left-[4px] text-[#00f0ff] opacity-60 select-none" style={{ transform: 'translateZ(-10px)' }}>SKILLS</span>
+                <span className="absolute top-[2px] left-[2px] text-[#3b82f6] opacity-80 select-none" >SKILLS</span>
+                <span className="absolute top-[4px] left-[4px] text-[#00f0ff] opacity-60 select-none" >SKILLS</span>
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#60a5fa] to-[#3b82f6]" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)', filter: 'drop-shadow(0 0 10px rgba(96,165,250,0.4))' }}>
                   SKILLS
                 </span>
@@ -101,15 +90,7 @@ export default function Skills() {
         >
           {skills.map((skill, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Tilt
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                perspective={1000}
-                scale={1.05}
-                transitionSpeed={2000}
-                gyroscope={true}
-                className="h-full"
-              >
+              <div className="h-full hover:scale-105 transition-transform duration-500">
                 <div className="glass-card p-8 h-full flex flex-col items-start group hover:border-white/20 transition-all duration-300 relative overflow-hidden">
                   {/* Hover gradient background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -129,7 +110,7 @@ export default function Skills() {
                   {/* Bottom glow line */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </div>
-              </Tilt>
+              </div>
             </motion.div>
           ))}
         </motion.div>

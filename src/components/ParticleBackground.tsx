@@ -19,11 +19,11 @@ export default function ParticleBackground() {
             value: "transparent",
           },
         },
-        fpsLimit: 60,
+        fpsLimit: 30,
         interactivity: {
           events: {
             onHover: {
-              enable: true,
+              enable: false, // Disabled hover to save performance
               mode: "grab",
             },
             resize: true,
@@ -64,7 +64,7 @@ export default function ParticleBackground() {
               enable: true,
               area: 800,
             },
-            value: 40,
+            value: 20, // Reduced from 40 for performance
           },
           opacity: {
             value: 0.3,
@@ -81,7 +81,7 @@ export default function ParticleBackground() {
             value: { min: 1, max: 3 },
           },
         },
-        detectRetina: true,
+        detectRetina: false, // Disabled for performance
       }}
     />
   );
